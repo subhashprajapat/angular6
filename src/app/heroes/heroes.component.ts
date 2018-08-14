@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../userservice.service';
 import { DataService } from '../data.service';
+import { FirstCharacterUpperCase ,IsemptyPipe} from '../pipes/firstcharcateruppercase';
 
 @Component({
   selector: 'app-heroes',

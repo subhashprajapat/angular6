@@ -1,0 +1,75 @@
+<h2>Hero Detail</h2>
+<h3>
+  <i>FormControl in a FormGroup</i>
+</h3>
+<form [formGroup]="heroForm">
+  <div class="form-group">
+    <label class="center-block">Name:
+      <input class="form-control" formControlName="name">
+    </label>
+  </div>
+  <p>Form value: {{ heroForm.value | json }}</p>
+</form>
+<h3>
+  <i>FormControl in a FormBuilder</i>
+</h3>
+<form [formGroup]="heroFormBuilder">
+  <div class="form-group">
+    <label class="center-block">firstName:
+      <input class="form-control" formControlName="firstName">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">street:
+      <input class="form-control" formControlName="street">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">city:
+      <input class="form-control" formControlName="city">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">state:
+      <input class="form-control" formControlName="state">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">zip:
+      <input class="form-control" formControlName="zip">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">power:
+      <input class="form-control" formControlName="power">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">sidekick:
+      <input class="form-control" formControlName="sidekick">
+    </label>
+  </div>
+  <p>Form value: {{ heroFormBuilder.value | json }}</p>
+  <p>Form status: {{ heroFormBuilder.status | json }}</p>
+</form>
+
+<p>Observable Basics</p>
+<hr/>
+<b>Observable Data </b>
+<div>
+  <div *ngFor="let f of fruits"> {{ f | uppercase }}</div>
+  <hr>
+  <div >
+    <b>Error Status :</b>
+    {{anyErrors ? 'error occured https://dzone.com/articles/observables-with-the-angular-5' : 'It All Good'}}
+    <hr>
+  </div>
+  <div>
+    <b> completion status : </b>
+    {{ finished ? 'Observer completed ': '' }}
+  </div>
+</div>
+<hr>
+<button (click)="Start()">Start Emitting</button><hr>
+<b>RxJS-library Operators Examples</b>
+<p>Please Check Console.log</p>

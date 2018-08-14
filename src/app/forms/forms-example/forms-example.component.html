@@ -1,0 +1,49 @@
+<div class="content">
+  Keyup look back component:
+  <input type="text" #keyUp (keyup)="onKey(keyUp.value)" (keyup.enter)="update(keyUp.value)" (blur)="update(keyUp.value); keyUp.value=''">
+  <p>{{keyUp.value}}</p>
+  <p [innerHtml]="values | uppercase"></p>
+  <p [innerHtml]="value"></p>
+  <ul>
+    <li *ngFor="let h of heroes">
+      {{h}}
+    </li>
+  </ul>
+
+
+  <h1>Hero form</h1>
+  {{diagnostic}}
+  <form #heroForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel" minlength="4">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+          Name is required
+        </div>
+        <div *ngIf="name.errors.minlength">
+          Name must be at least 4 characters long.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text" class="form-control" id="alterEgo" required [(ngModel)]="model.alterEgo" name="alterEgo" #alterEgo="ngModel">
+      <div [hidden]="alterEgo.valid || alterEgo.pristine" class="alert alert-danger">
+        AlterEgo is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select class="form-control" id="power" required [(ngModel)]="model.power" name="power">
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button> &nbsp;&nbsp;
+    <button type="submit" class="btn btn-success" (click)="heroForm.reset()">Rset</button>
+  </form>
+
+  <h1>Reactive Forms</h1>
+  <app-hero-detail></app-hero-detail>
+</div>

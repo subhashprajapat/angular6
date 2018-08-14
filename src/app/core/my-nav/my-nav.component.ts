@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./my-nav.component.css']
 })
 export class MyNavComponent {
+  color:string = '#3f51b5';
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
   constructor(private breakpointObserver: BreakpointObserver) {}
 }

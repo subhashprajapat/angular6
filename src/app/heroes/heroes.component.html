@@ -1,20 +1,20 @@
 <mat-card class="example-form">
-    <table class="table table-bordered">       
+    <table class="table table-bordered" *ngIf="DataRecord.length>0">       
         <tr>
           <th>First Name</th>
-          <td>{{DataRecord[0].fname}}</td>
+          <td>{{DataRecord[0].fname | uppercase}}</td>
         </tr>
         <tr>
             <th>Last Name</th>
-            <td>{{DataRecord[0].lname}}</td>
+            <td>{{DataRecord[0].lname  | firstcharcateruppercase}}</td>
           </tr>
           <tr>
               <th>Phone Number</th>
-              <td>{{DataRecord[0].phone}}</td>
+              <td>{{DataRecord[0].phone | isempty : '7891644646'}}</td>
           </tr>
           <tr>
                 <th>Address</th>
-                <td>{{DataRecord[0].address}}</td>
+                <td>{{DataRecord[0].address | isempty : 'Test Address'}}</td>
           </tr>
           <tr>
               <th>City</th>
@@ -29,4 +29,5 @@
                   <td>{{DataRecord[0].gender}}</td>
             </tr>
       </table>
+      <h2 *ngIf="DataRecord.length == 0">Please Fill your Profile on dashboard.</h2>
 </mat-card>

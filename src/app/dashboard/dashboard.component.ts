@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { UserserviceService } from '../userservice.service';
 import { ChildComponent } from '../child/child.component';
 import { DataService } from '../data.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, } from 'rxjs';
-import { catchError,map } from 'rxjs/operators';
 import {Http,Headers} from '@angular/http';
 
 @Component({
@@ -45,19 +43,11 @@ export class DashboardComponent implements AfterViewInit  {
       terms:true
     });
   }
-  onSubmit(){    
-// var req={
-//   fname: 's',
-//   lname: 's',
-//   address: 's',
-//   city: 's',
-//   state: 's',
-//   phone: 's',
-//   gender: 's',
-//   terms:true
-// }
+  onSubmit(){ 
+    JSON.stringify(this.empForm.value)
     let url = `${this.heroesUrl}/createuser`;
-    this.http.post(url,this.objectToParams(this.empForm.value),{headers: this.headers}).subscribe(res => console.log(res.json()));
+    let url1 = `${this.heroesUrl}/login`;
+    this.http.post(url,JSON.stringify(this.empForm.value),{headers: this.headers}).subscribe(res => console.log(res.json()));
     this.UserserviceService.getUserData(this.empForm.value); 
     this.router.navigate(['heroes']); // ON SUCCESS
     }

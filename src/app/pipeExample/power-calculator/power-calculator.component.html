@@ -1,0 +1,7 @@
+
+<h2>Power Calculator</h2>
+<div>Normal Power:<input [(ngModel)]="powerCal"></div>
+<div>Boost factor:&nbsp;&nbsp;&nbsp;<input [(ngModel)]="factor"></div>
+<p>
+  Super Hero Power: {{powerCal | exponentialStrength: factor}}
+</p>
